@@ -23,7 +23,7 @@ createInertiaApp({
             .mount(el);
     },
 
-    title: title => `InertiaApp - ${title}`,
+    title: title => `OliveBranch - ${title}`,
 
     progress: {
         // The delay after which the progress bar will appear
