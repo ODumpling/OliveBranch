@@ -1,7 +1,7 @@
 # Olive Branch
       
 This is a solution template for devs who want to create a single page app using (Vue, can be used for React too..)
-and ASP.NET Core. It is heavily inspired by [Jason Taylor's Clean Architecture Template](https://github.com/jasontaylordev) 
+and ASP.NET Core. It is heavily inspired by [Jason Taylor's Clean Architecture Template](https://github.com/jasontaylordev/CleanArchitecture) 
 but uses Inertiajs for the frontend.
 
 ## Technologies used :
