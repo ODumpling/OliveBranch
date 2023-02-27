@@ -1,7 +1,7 @@
-﻿using Domain.Common;
-using Domain.Exceptions;
+﻿using OliveBranch.Domain.Common;
+using OliveBranch.Domain.Exceptions;
 
-namespace Domain.ValueObjects;
+namespace OliveBranch.Domain.ValueObjects;
 
 public class Colour : ValueObject
 {

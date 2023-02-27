@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApp.Models;
+namespace OliveBranch.WebApp.Models;
 
 public class InputModel
 {
@@ -10,7 +10,7 @@ public class InputModel
     /// </summary>
     [Required]
     [EmailAddress]
-    public string Email { get; set; }
+    public string Email { get; set; } = null!;
 
     /// <summary>
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -18,15 +18,15 @@ public class InputModel
     /// </summary>
     [Required]
     [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public string Password { get; set; } = null!;
 
     /// <summary>
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
     ///     directly from your code. This API may change or be removed in future releases.
     /// </summary>
     [Display(Name = "Remember me?")]
-    public bool RememberMe { get; set; }
+    public bool RememberMe { get; set; } = false;
 
 
-    public string ReturnUrl { get; set; }
+    public string ReturnUrl { get; set; } = null!;
 }

@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Interfaces;
+﻿namespace OliveBranch.Application.Common.Interfaces;
 
 public interface ICurrentUserService
 {

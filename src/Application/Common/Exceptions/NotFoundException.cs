@@ -1,4 +1,4 @@
-﻿namespace Application.Common.Exceptions;
+﻿namespace OliveBranch.Application.Common.Exceptions;
 
 public class NotFoundException : Exception
 {

@@ -1,8 +1,8 @@
-﻿using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using OliveBranch.Domain.Entities;
 
-namespace Infrastructure.Data.Configurations;
+namespace OliveBranch.Infrastructure.Data.Configurations;
 
 public class TodoListConfiguration : IEntityTypeConfiguration<TodoList>
 {

@@ -4,10 +4,12 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>OliveBranch.Domain</AssemblyName>
+        <RootNamespace>OliveBranch.Domain</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="MediatR.Contracts" Version="2.0.1"/>
+        <PackageReference Include="MediatR.Contracts" Version="2.0.1" />
     </ItemGroup>
 
 </Project>

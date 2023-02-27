@@ -1,10 +1,10 @@
-﻿using Application.Common.Exceptions;
-using Application.Common.Interfaces;
-using Domain.Entities;
-using Domain.Events;
-using MediatR;
+﻿using MediatR;
+using OliveBranch.Application.Common.Exceptions;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Domain.Entities;
+using OliveBranch.Domain.Events;
 
-namespace Application.TodoItems.Commands.DeleteTodoItem;
+namespace OliveBranch.Application.TodoItems.Commands.DeleteTodoItem;
 
 public record DeleteTodoItemCommand(int Id) : IRequest;
 

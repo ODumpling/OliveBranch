@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.WeatherForecasts.Queries.GetWeatherForecasts;
+namespace OliveBranch.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 public record GetWeatherForecastsQuery : IRequest<IEnumerable<WeatherForecast>>;
 

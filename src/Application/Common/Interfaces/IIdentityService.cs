@@ -1,6 +1,6 @@
-﻿using Application.Common.Models;
+﻿using OliveBranch.Application.Common.Models;
 
-namespace Application.Common.Interfaces;
+namespace OliveBranch.Application.Common.Interfaces;
 
 public interface IIdentityService
 {

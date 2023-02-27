@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
-using Application.Common.Behaviours;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using OliveBranch.Application.Common.Behaviours;
 
-namespace Application;
+namespace OliveBranch.Application;
 
 public static class ConfigureServices
 {

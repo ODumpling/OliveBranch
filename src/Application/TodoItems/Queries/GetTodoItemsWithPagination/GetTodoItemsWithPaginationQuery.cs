@@ -1,11 +1,11 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Mappings;
-using Application.Common.Models;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using MediatR;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Application.Common.Mappings;
+using OliveBranch.Application.Common.Models;
 
-namespace Application.TodoItems.Queries.GetTodoItemsWithPagination;
+namespace OliveBranch.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
 public record GetTodoItemsWithPaginationQuery : IRequest<PaginatedList<TodoItemBriefDto>>
 {

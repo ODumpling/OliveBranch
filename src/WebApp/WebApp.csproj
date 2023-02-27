@@ -5,6 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <SpaRoot>Resources\</SpaRoot>
+        <AssemblyName>OliveBranch.WebApp</AssemblyName>
+        <RootNamespace>OliveBranch.WebApp</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

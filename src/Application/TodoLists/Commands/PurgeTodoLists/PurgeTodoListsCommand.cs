@@ -1,8 +1,8 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Security;
-using MediatR;
+﻿using MediatR;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Application.Common.Security;
 
-namespace Application.TodoLists.Commands.PurgeTodoLists;
+namespace OliveBranch.Application.TodoLists.Commands.PurgeTodoLists;
 
 [Authorize(Roles = "Administrator")]
 [Authorize(Policy = "CanPurge")]

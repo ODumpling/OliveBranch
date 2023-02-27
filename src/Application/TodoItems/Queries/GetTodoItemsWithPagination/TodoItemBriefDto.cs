@@ -1,7 +1,7 @@
-﻿using Application.Common.Mappings;
-using Domain.Entities;
+﻿using OliveBranch.Application.Common.Mappings;
+using OliveBranch.Domain.Entities;
 
-namespace Application.TodoItems.Queries.GetTodoItemsWithPagination;
+namespace OliveBranch.Application.TodoItems.Queries.GetTodoItemsWithPagination;
 
 public class TodoItemBriefDto : IMapFrom<TodoItem>
 {

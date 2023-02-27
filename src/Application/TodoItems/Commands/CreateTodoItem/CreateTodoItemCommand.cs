@@ -1,9 +1,9 @@
-﻿using Application.Common.Interfaces;
-using Domain.Entities;
-using Domain.Events;
-using MediatR;
+﻿using MediatR;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Domain.Entities;
+using OliveBranch.Domain.Events;
 
-namespace Application.TodoItems.Commands.CreateTodoItem;
+namespace OliveBranch.Application.TodoItems.Commands.CreateTodoItem;
 
 public record CreateTodoItemCommand : IRequest<int>
 {

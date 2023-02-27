@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
-using Application.Common.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using OliveBranch.Application.Common.Interfaces;
 
-namespace Application.Common.Behaviours;
+namespace OliveBranch.Application.Common.Behaviours;
 
 public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {

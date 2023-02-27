@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.WeatherForecasts.Queries.GetHelloWorld;
+namespace OliveBranch.Application.WeatherForecasts.Queries.GetHelloWorld;
 
 public record GetHelloWorldQuery : IRequest<string>;
 

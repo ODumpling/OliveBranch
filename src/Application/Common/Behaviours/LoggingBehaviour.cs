@@ -1,8 +1,8 @@
-﻿using Application.Common.Interfaces;
-using MediatR.Pipeline;
+﻿using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
+using OliveBranch.Application.Common.Interfaces;
 
-namespace Application.Common.Behaviours;
+namespace OliveBranch.Application.Common.Behaviours;
 
 public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where TRequest : notnull
 {
@@ -15,7 +15,7 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
         _currentUserService = currentUserService;
     }
 
-    public async Task Process(TRequest request, CancellationToken cancellationToken)
+    public Task Process(TRequest request, CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
         var userId = _currentUserService.UserId ?? string.Empty;
@@ -23,5 +23,7 @@ public class LoggingBehaviour<TRequest> : IRequestPreProcessor<TRequest> where T
 
         _logger.LogInformation("CleanArchitecture Request: {Name} {@UserId} - {@Request}",
             requestName, userId, request);
+
+        return Task.CompletedTask;
     }
 }

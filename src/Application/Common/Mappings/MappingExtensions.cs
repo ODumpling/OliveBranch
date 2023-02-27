@@ -1,9 +1,9 @@
-﻿using Application.Common.Models;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using OliveBranch.Application.Common.Models;
 
-namespace Application.Common.Mappings;
+namespace OliveBranch.Application.Common.Mappings;
 
 public static class MappingExtensions
 {

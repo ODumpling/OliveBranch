@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApp.Controllers;
+namespace OliveBranch.WebApp.Controllers;
 
 public class UsersController : BaseController
 {

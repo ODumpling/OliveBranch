@@ -1,8 +1,8 @@
-﻿using Application.Common.Mappings;
-using AutoMapper;
-using Domain.Entities;
+﻿using AutoMapper;
+using OliveBranch.Application.Common.Mappings;
+using OliveBranch.Domain.Entities;
 
-namespace Application.TodoLists.Queries.GetTodos;
+namespace OliveBranch.Application.TodoLists.Queries.GetTodos;
 
 public class TodoItemDto : IMapFrom<TodoItem>
 {

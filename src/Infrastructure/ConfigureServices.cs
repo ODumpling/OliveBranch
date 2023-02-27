@@ -1,14 +1,14 @@
-﻿using Application.Common.Interfaces;
-using Infrastructure.Common;
-using Infrastructure.Data;
-using Infrastructure.Identity;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Infrastructure.Common;
+using OliveBranch.Infrastructure.Data;
+using OliveBranch.Infrastructure.Identity;
 
-namespace Infrastructure;
+namespace OliveBranch.Infrastructure;
 
 public static class ConfigureServices
 {

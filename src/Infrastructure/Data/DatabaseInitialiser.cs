@@ -1,9 +1,9 @@
-﻿using Domain.Entities;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using OliveBranch.Domain.Entities;
 
-namespace Infrastructure.Data;
+namespace OliveBranch.Infrastructure.Data;
 
 public class DatabaseInitialiser
 {
@@ -47,7 +47,7 @@ public class DatabaseInitialiser
         }
     }
 
-    public async Task TrySeedAsync()
+    private async Task TrySeedAsync()
     {
         // Default roles
         var administratorRole = new IdentityRole("Administrator");

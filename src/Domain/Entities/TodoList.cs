@@ -1,7 +1,7 @@
-﻿using Domain.Common;
-using Domain.ValueObjects;
+﻿using OliveBranch.Domain.Common;
+using OliveBranch.Domain.ValueObjects;
 
-namespace Domain.Entities;
+namespace OliveBranch.Domain.Entities;
 
 public class TodoList : BaseAuditableEntity
 {

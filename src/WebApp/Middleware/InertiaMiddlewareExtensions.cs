@@ -2,7 +2,7 @@
 using InertiaCore;
 using Microsoft.AspNetCore.Antiforgery;
 
-namespace WebApp.Middleware;
+namespace OliveBranch.WebApp.Middleware;
 
 public static class InertiaMiddlewareExtensions
 {

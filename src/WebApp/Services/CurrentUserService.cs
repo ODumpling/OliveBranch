@@ -1,7 +1,7 @@
 ﻿using System.Security.Claims;
-using Application.Common.Interfaces;
+using OliveBranch.Application.Common.Interfaces;
 
-namespace WebApp.Services;
+namespace OliveBranch.WebApp.Services;
 
 public class CurrentUserService : ICurrentUserService
 {
@@ -12,5 +12,5 @@ public class CurrentUserService : ICurrentUserService
         _httpContextAccessor = httpContextAccessor;
     }
 
-    public string? UserId => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+    public string? UserId => _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.NameIdentifier);
 }

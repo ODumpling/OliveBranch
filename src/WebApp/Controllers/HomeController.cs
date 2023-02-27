@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
-using Application.WeatherForecasts.Queries.GetHelloWorld;
 using InertiaCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
+using OliveBranch.WebApp.Models;
 
-namespace WebApp.Controllers;
+namespace OliveBranch.WebApp.Controllers;
 
 public class HomeController : BaseController
 {

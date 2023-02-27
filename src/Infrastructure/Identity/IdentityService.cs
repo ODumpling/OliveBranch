@@ -1,7 +1,7 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Models;
+﻿using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Application.Common.Models;
 
-namespace Infrastructure.Identity;
+namespace OliveBranch.Infrastructure.Identity;
 
 internal class IdentityService : IIdentityService
 {

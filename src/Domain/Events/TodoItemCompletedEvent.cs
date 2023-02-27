@@ -1,7 +1,7 @@
-﻿using Domain.Common;
-using Domain.Entities;
+﻿using OliveBranch.Domain.Common;
+using OliveBranch.Domain.Entities;
 
-namespace Domain.Events;
+namespace OliveBranch.Domain.Events;
 
 public class TodoItemCompletedEvent : BaseEvent
 {

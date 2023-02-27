@@ -1,8 +1,8 @@
-﻿using Domain.Events;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using OliveBranch.Domain.Events;
 
-namespace Application.TodoItems.EventHandlers;
+namespace OliveBranch.Application.TodoItems.EventHandlers;
 
 public class TodoItemCompletedEventHandler : INotificationHandler<TodoItemCompletedEvent>
 {

@@ -1,8 +1,8 @@
-﻿using Domain.Common;
-using Domain.Enums;
-using Domain.Events;
+﻿using OliveBranch.Domain.Common;
+using OliveBranch.Domain.Enums;
+using OliveBranch.Domain.Events;
 
-namespace Domain.Entities;
+namespace OliveBranch.Domain.Entities;
 
 public class TodoItem : BaseAuditableEntity
 {

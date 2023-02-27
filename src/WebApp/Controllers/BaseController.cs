@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApp.Controllers;
+namespace OliveBranch.WebApp.Controllers;
 
 public class BaseController : Controller
 {

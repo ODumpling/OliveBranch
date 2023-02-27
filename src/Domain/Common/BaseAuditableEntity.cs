@@ -1,4 +1,4 @@
-﻿namespace Domain.Common;
+﻿namespace OliveBranch.Domain.Common;
 
 public abstract class BaseAuditableEntity : BaseEntity
 {

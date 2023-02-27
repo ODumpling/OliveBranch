@@ -1,4 +1,4 @@
-﻿namespace Domain.Exceptions;
+﻿namespace OliveBranch.Domain.Exceptions;
 
 public class UnsupportedColourException : Exception
 {

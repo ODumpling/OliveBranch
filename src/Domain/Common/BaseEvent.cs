@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Domain.Common;
+namespace OliveBranch.Domain.Common;
 
 public abstract class BaseEvent : INotification
 {

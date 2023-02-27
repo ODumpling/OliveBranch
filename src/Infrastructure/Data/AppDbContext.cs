@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
-using Application.Common.Interfaces;
-using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Domain.Entities;
 
-namespace Infrastructure.Data;
+namespace OliveBranch.Infrastructure.Data;
 
 public class AppDbContext : IdentityDbContext<IdentityUser>, IApplicationDbContext
 {

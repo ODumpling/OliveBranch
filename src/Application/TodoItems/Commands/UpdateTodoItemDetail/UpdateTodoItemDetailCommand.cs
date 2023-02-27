@@ -1,10 +1,10 @@
-﻿using Application.Common.Exceptions;
-using Application.Common.Interfaces;
-using Domain.Entities;
-using Domain.Enums;
-using MediatR;
+﻿using MediatR;
+using OliveBranch.Application.Common.Exceptions;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Domain.Entities;
+using OliveBranch.Domain.Enums;
 
-namespace Application.TodoItems.Commands.UpdateTodoItemDetail;
+namespace OliveBranch.Application.TodoItems.Commands.UpdateTodoItemDetail;
 
 public record UpdateTodoItemDetailCommand : IRequest
 {

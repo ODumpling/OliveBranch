@@ -1,12 +1,12 @@
-﻿using Application.Common.Interfaces;
-using Application.Common.Security;
-using AutoMapper;
+﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Application.Common.Security;
+using OliveBranch.Domain.Enums;
 
-namespace Application.TodoLists.Queries.GetTodos;
+namespace OliveBranch.Application.TodoLists.Queries.GetTodos;
 
 [Authorize]
 public record GetTodosQuery : IRequest<TodosVm>;

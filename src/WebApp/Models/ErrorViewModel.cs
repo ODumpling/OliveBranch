@@ -1,4 +1,4 @@
-namespace WebApp.Models;
+namespace OliveBranch.WebApp.Models;
 
 public class ErrorViewModel
 {

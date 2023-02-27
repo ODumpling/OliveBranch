@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Infrastructure.Data.Migrations
+namespace OliveBranch.Infrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class CreateIdentitySchema : Migration

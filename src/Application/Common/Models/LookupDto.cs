@@ -1,7 +1,7 @@
-﻿using Application.Common.Mappings;
-using Domain.Entities;
+﻿using OliveBranch.Application.Common.Mappings;
+using OliveBranch.Domain.Entities;
 
-namespace Application.Common.Models;
+namespace OliveBranch.Application.Common.Models;
 
 // Note: This is currently just used to demonstrate applying multiple IMapFrom attributes.
 public class LookupDto : IMapFrom<TodoList>, IMapFrom<TodoItem>

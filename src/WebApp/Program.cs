@@ -1,9 +1,9 @@
-using Application;
 using InertiaCore.Extensions;
-using Infrastructure;
-using Infrastructure.Data;
-using WebApp.Middleware;
-using WebApp.Services;
+using OliveBranch.Application;
+using OliveBranch.Infrastructure;
+using OliveBranch.Infrastructure.Data;
+using OliveBranch.WebApp.Middleware;
+using OliveBranch.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-﻿using Application.Common.Interfaces;
+﻿using OliveBranch.Application.Common.Interfaces;
 
-namespace Infrastructure.Common;
+namespace OliveBranch.Infrastructure.Common;
 
 public class DateTimeService : IDateTime
 {

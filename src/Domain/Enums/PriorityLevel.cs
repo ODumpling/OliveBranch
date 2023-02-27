@@ -1,4 +1,4 @@
-﻿namespace Domain.Enums;
+﻿namespace OliveBranch.Domain.Enums;
 
 public enum PriorityLevel
 {

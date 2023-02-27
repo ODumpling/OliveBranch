@@ -1,9 +1,9 @@
-﻿using Application.Common.Exceptions;
-using Application.Common.Interfaces;
-using Domain.Entities;
-using MediatR;
+﻿using MediatR;
+using OliveBranch.Application.Common.Exceptions;
+using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Domain.Entities;
 
-namespace Application.TodoLists.Commands.UpdateTodoList;
+namespace OliveBranch.Application.TodoLists.Commands.UpdateTodoList;
 
 public record UpdateTodoListCommand : IRequest
 {

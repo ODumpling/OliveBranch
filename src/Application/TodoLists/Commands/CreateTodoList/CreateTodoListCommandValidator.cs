@@ -1,8 +1,8 @@
-﻿using Application.Common.Interfaces;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using OliveBranch.Application.Common.Interfaces;
 
-namespace Application.TodoLists.Commands.CreateTodoList;
+namespace OliveBranch.Application.TodoLists.Commands.CreateTodoList;
 
 public class CreateTodoListCommandValidator : AbstractValidator<CreateTodoListCommand>
 {

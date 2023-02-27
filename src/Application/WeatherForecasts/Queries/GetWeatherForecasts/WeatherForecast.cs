@@ -1,4 +1,4 @@
-﻿namespace Application.WeatherForecasts.Queries.GetWeatherForecasts;
+﻿namespace OliveBranch.Application.WeatherForecasts.Queries.GetWeatherForecasts;
 
 public class WeatherForecast
 {

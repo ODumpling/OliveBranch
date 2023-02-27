@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApp.Models;
+using OliveBranch.WebApp.Models;
 
-namespace WebApp.Controllers;
+namespace OliveBranch.WebApp.Controllers;
 
 public class AuthController : BaseController
 {
@@ -23,7 +23,7 @@ public class AuthController : BaseController
     [HttpGet]
     public async Task<IActionResult> LoginAsync(string returnUrl = "/")
     {
-        var isAuthenticated = HttpContext.User.Identity.IsAuthenticated;
+        var isAuthenticated = HttpContext.User.Identity!.IsAuthenticated;
 
         if (isAuthenticated) return Inertia.Location(returnUrl);
         // Clear the existing external cookie to ensure a clean login process

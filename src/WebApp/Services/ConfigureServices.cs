@@ -1,6 +1,6 @@
-﻿using Application.Common.Interfaces;
+﻿using OliveBranch.Application.Common.Interfaces;
 
-namespace WebApp.Services;
+namespace OliveBranch.WebApp.Services;
 
 public static class ConfigureServices
 {

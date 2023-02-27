@@ -1,7 +1,7 @@
-﻿using Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using OliveBranch.Domain.Entities;
 
-namespace Application.Common.Interfaces;
+namespace OliveBranch.Application.Common.Interfaces;
 
 public interface IApplicationDbContext
 {

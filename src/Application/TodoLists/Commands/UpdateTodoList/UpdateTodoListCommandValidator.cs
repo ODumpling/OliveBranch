@@ -1,8 +1,8 @@
-﻿using Application.Common.Interfaces;
-using FluentValidation;
+﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using OliveBranch.Application.Common.Interfaces;
 
-namespace Application.TodoLists.Commands.UpdateTodoList;
+namespace OliveBranch.Application.TodoLists.Commands.UpdateTodoList;
 
 public class UpdateTodoListCommandValidator : AbstractValidator<UpdateTodoListCommand>
 {
