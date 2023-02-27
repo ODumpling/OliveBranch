@@ -6,6 +6,11 @@ namespace WebApp.Middleware;
 
 public static class InertiaMiddlewareExtensions
 {
+    /// <summary>
+    /// Adds current user details as shared data across requests. 
+    /// </summary>
+    /// <param name="app"></param>
+    /// <returns></returns>
     public static IApplicationBuilder UseInertiaAuth(this IApplicationBuilder app)
     {
         app.Use(async (context, next) =>
@@ -32,6 +37,11 @@ public static class InertiaMiddlewareExtensions
         return app;
     }
 
+    /// <summary>
+    /// Creates a cookie to be used to validate against CSRF or XSRF attacks
+    /// </summary>
+    /// <param name="app"></param>
+    /// <returns></returns>
     public static IApplicationBuilder UseInertiaXSRF(this IApplicationBuilder app)
     {
         var antiforgery = app.ApplicationServices.GetRequiredService<IAntiforgery>();
