@@ -10,4 +10,6 @@ public class TodoList : BaseAuditableEntity
     public Colour Colour { get; set; } = Colour.White;
 
     public IList<TodoItem> Items { get; } = new List<TodoItem>();
+
+    public virtual ApplicationUser User { get; set; }
 }

@@ -9,11 +9,11 @@ public class DatabaseInitialiser
 {
     private readonly AppDbContext _context;
     private readonly ILogger<DatabaseInitialiser> _logger;
-    private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly RoleManager<ApplicationRole> _roleManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
     public DatabaseInitialiser(ILogger<DatabaseInitialiser> logger, AppDbContext context,
-        UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager)
     {
         _logger = logger;
         _context = context;
@@ -25,7 +25,11 @@ public class DatabaseInitialiser
     {
         try
         {
-            if (_context.Database.IsSqlServer()) await _context.Database.MigrateAsync();
+            if (_context.Database.IsSqlServer())
+            {
+                await _context.Database.EnsureDeletedAsync();
+                await _context.Database.MigrateAsync();
+            } 
         }
         catch (Exception ex)
         {
@@ -50,27 +54,38 @@ public class DatabaseInitialiser
     private async Task TrySeedAsync()
     {
         // Default roles
-        var administratorRole = new IdentityRole("Administrator");
+        var administratorRole = new ApplicationRole
+        {
+            Name = "Administrator",
+        };
 
         if (_roleManager.Roles.All(r => r.Name != administratorRole.Name))
             await _roleManager.CreateAsync(administratorRole);
 
         // Default users
-        var administrator = new IdentityUser { UserName = "Inertia Administrator", Email = "administrator@localhost" };
+        var administrator = new ApplicationUser { UserName = "OliveAdministrator", Email = "administrator@localhost" };
 
         if (_userManager.Users.All(u => u.Email != administrator.Email))
         {
-            await _userManager.CreateAsync(administrator, "Administrator1!");
+            var result = await _userManager.CreateAsync(administrator, "Administrator1!");
             if (!string.IsNullOrWhiteSpace(administratorRole.Name))
                 await _userManager.AddToRolesAsync(administrator, new[] { administratorRole.Name });
+
+            if (result.Succeeded)
+            {
+                _logger.LogInformation("Administator User Created");
+            }
         }
 
+        
         // Default data
         // Seed, if necessary
         if (!_context.TodoLists.Any())
         {
+            var user = await _userManager.FindByEmailAsync(administrator.Email);
             _context.TodoLists.Add(new TodoList
             {
+                User = user,
                 Title = "Todo List",
                 Items =
                 {

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OliveBranch.Application.Common.Interfaces;
+using OliveBranch.Domain.Entities;
 using OliveBranch.Infrastructure.Common;
 using OliveBranch.Infrastructure.Data;
 using OliveBranch.Infrastructure.Identity;
@@ -20,16 +21,16 @@ public static class ConfigureServices
 
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(connectionString,
-                builder => builder.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)));
+                builder => builder.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName)).EnableSensitiveDataLogging());
 
 
-        services.AddIdentity<IdentityUser, IdentityRole>(o => { o.Stores.MaxLengthForKeys = 128; })
+        services.AddIdentity<ApplicationUser, ApplicationRole>(o => { o.Stores.MaxLengthForKeys = 128; })
             .AddEntityFrameworkStores<AppDbContext>();
 
         services.ConfigureApplicationCookie(options =>
         {
             options.AccessDeniedPath = "/Auth/AccessDenied";
-            options.Cookie.Name = "_Inertia.Auth";
+            options.Cookie.Name = "_OliveBranch.Auth";
             options.Cookie.HttpOnly = true;
             options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
             options.LoginPath = "/Auth/Login";

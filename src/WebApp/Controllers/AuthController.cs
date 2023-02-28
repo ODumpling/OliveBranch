@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using OliveBranch.Domain.Entities;
 using OliveBranch.WebApp.Models;
 
 namespace OliveBranch.WebApp.Controllers;
@@ -9,11 +10,11 @@ namespace OliveBranch.WebApp.Controllers;
 public class AuthController : BaseController
 {
     private readonly ILogger<AuthController> _logger;
-    private readonly SignInManager<IdentityUser> _signInManager;
-    private readonly UserManager<IdentityUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public AuthController(SignInManager<IdentityUser> signInManager, ILogger<AuthController> logger,
-        UserManager<IdentityUser> userManager)
+    public AuthController(SignInManager<ApplicationUser> signInManager, ILogger<AuthController> logger,
+        UserManager<ApplicationUser> userManager)
     {
         _signInManager = signInManager;
         _logger = logger;
