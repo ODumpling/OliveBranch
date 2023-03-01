@@ -1,0 +1,41 @@
+﻿{
+  "$schema": "https://json.schemastore.org/template",
+  "author": "ODumpling",
+  "classifications": [
+    "Web",
+    "SPA",
+    "ASP.NET",
+    "Clean Architecture",
+    "Inertiajs"
+  ],
+  "name": "Olive Branch Solution",
+  "description":  "A Solution Template made to help simplify development of SPA using Inertiajs",
+  "identity": "OliveBranch.Solution.CSharp",
+  "groupIdentity": "OliveBranch.Architecture.Solution",
+  "shortName": "olive-sln",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "OliveBranch",
+  "preferNameDirectory": true,
+  "sources": [
+    {
+      "source": "./",
+      "target": "./",
+      "exclude": [
+        "README.md",
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        ".template.config/**/*",
+        ".vs/**/*",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        "**/.git/**",
+        "*.nuspec",
+        "**/node_modules/**"
+      ]
+    }
+  ]
+}
