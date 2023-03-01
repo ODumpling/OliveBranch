@@ -31,7 +31,7 @@ if (app.Environment.IsDevelopment())
     // Initialise and seed database
     using var scope = app.Services.CreateScope();
     var initializer = scope.ServiceProvider.GetRequiredService<DatabaseInitialiser>();
-    await initializer.InitialiseAsync();
+    await initializer.RefreshAsync();
     await initializer.SeedAsync();
 }
 else
