@@ -21,10 +21,12 @@ public class AuthorizationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRe
     public AuthorizationBehaviour(
         ICurrentUserService currentUserService,
         UserManager<ApplicationUser> userManager,
+        IAuthorizationService authorizationService,
         IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory)
     {
         _currentUserService = currentUserService;
         _userManager = userManager;
+        _authorizationService = authorizationService;
         _userClaimsPrincipalFactory = userClaimsPrincipalFactory;
     }
 

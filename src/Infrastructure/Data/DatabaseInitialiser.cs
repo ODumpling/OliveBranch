@@ -85,7 +85,7 @@ public class DatabaseInitialiser
             var user = await _userManager.FindByEmailAsync(administrator.Email);
             _context.TodoLists.Add(new TodoList
             {
-                User = user,
+                User = user!,
                 Title = "Todo List",
                 Items =
                 {

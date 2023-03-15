@@ -2,23 +2,18 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using OliveBranch.Domain.Entities;
-using OliveBranch.WebApp.Models;
+using OliveBranch.Application.Auth.Commands.LoginUserCommand;
+using OliveBranch.Application.Auth.Commands.LogoutUserCommand;
 
 namespace OliveBranch.WebApp.Controllers;
 
 public class AuthController : BaseController
 {
     private readonly ILogger<AuthController> _logger;
-    private readonly SignInManager<ApplicationUser> _signInManager;
-    private readonly UserManager<ApplicationUser> _userManager;
 
-    public AuthController(SignInManager<ApplicationUser> signInManager, ILogger<AuthController> logger,
-        UserManager<ApplicationUser> userManager)
+    public AuthController(ILogger<AuthController> logger)
     {
-        _signInManager = signInManager;
         _logger = logger;
-        _userManager = userManager;
     }
 
     [HttpGet]
@@ -37,47 +32,36 @@ public class AuthController : BaseController
     }
 
     [HttpPost]
-    public async Task<IActionResult> Login([FromBody] InputModel input)
+    public async Task<IActionResult> Login([FromBody] LoginUserCommand input)
     {
         var returnUrl = input.ReturnUrl ??= Url.Content("~/");
 
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            var user = await _userManager.FindByEmailAsync(input.Email);
-
-            if (user is null)
-            {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return Inertia.Render("Auth/Login", new
-                {
-                    returnUrl
-                });
-            }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-            var result = await _signInManager.PasswordSignInAsync(user, input.Password, input.RememberMe, false);
-            if (result.Succeeded)
-            {
-                _logger.LogInformation("User logged in.");
-                return Inertia.Location(returnUrl);
-            }
-
-            if (result.RequiresTwoFactor)
-                return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, input.RememberMe });
-            if (result.IsLockedOut)
-            {
-                _logger.LogWarning("User account locked out.");
-                return RedirectToPage("./Lockout");
-            }
-
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return Inertia.Render("Auth/Login", new
             {
                 returnUrl
             });
         }
 
+        var result = await Mediator.Send(input);
+
+        if (result.Succeeded)
+        {
+            _logger.LogInformation("User logged in.");
+            return Inertia.Location(returnUrl);
+        }
+
+        if (result.RequiresTwoFactor)
+            return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, input.RememberMe });
+        if (result.IsLockedOut)
+        {
+            _logger.LogWarning("User account locked out.");
+            return RedirectToPage("./Lockout");
+        }
+
+        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+        _logger.LogInformation("Failed login attempt with email {Email}", input.Email);
         return Inertia.Render("Auth/Login", new
         {
             returnUrl
@@ -87,8 +71,7 @@ public class AuthController : BaseController
     [HttpPost]
     public async Task<IActionResult> Logout()
     {
-        await _signInManager.SignOutAsync();
-        _logger.LogInformation("User logged out.");
+        await Mediator.Send(new LogoutUserCommand());
 
         return Redirect("/auth/login");
     }
