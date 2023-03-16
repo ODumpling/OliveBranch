@@ -1,9 +1,11 @@
 ﻿using InertiaCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OliveBranch.Application.Auth.Commands.LoginUserCommand;
 using OliveBranch.Application.Auth.Commands.LogoutUserCommand;
+using OliveBranch.Application.Auth.Commands.RegisterUserCommand;
 
 namespace OliveBranch.WebApp.Controllers;
 
@@ -16,8 +18,33 @@ public class AuthController : BaseController
         _logger = logger;
     }
 
+
     [HttpGet]
-    public async Task<IActionResult> LoginAsync(string returnUrl = "/")
+    public async Task<IActionResult> Register()
+    {
+        return Inertia.Render("Auth/Register");
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> Register([FromBody] RegisterUserCommand command)
+    {
+        var result = await Mediator.Send(command);
+
+        if (!result.Succeeded)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.Code, error.Description);
+            }
+            return Inertia.Render("Auth/Register");
+        }
+
+        return RedirectToAction("Login");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Login(string returnUrl = "/")
     {
         var isAuthenticated = HttpContext.User.Identity!.IsAuthenticated;
 
