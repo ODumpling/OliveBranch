@@ -1,6 +1,5 @@
 ﻿using InertiaCore;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OliveBranch.Application.Auth.Commands.LoginUserCommand;
@@ -31,16 +30,14 @@ public class AuthController : BaseController
     {
         var result = await Mediator.Send(command);
 
-        if (!result.Succeeded)
+        if (result.Succeeded) return RedirectToAction("Login");
+        
+        foreach (var error in result.Errors)
         {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(error.Code, error.Description);
-            }
-            return Inertia.Render("Auth/Register");
+            ModelState.AddModelError(error.Code, error.Description);
         }
+        return Inertia.Render("Auth/Register");
 
-        return RedirectToAction("Login");
     }
 
     [HttpGet]
@@ -61,7 +58,7 @@ public class AuthController : BaseController
     [HttpPost]
     public async Task<IActionResult> Login([FromBody] LoginUserCommand input)
     {
-        var returnUrl = input.ReturnUrl ??= Url.Content("~/");
+        var returnUrl = input.ReturnUrl;
 
         if (!ModelState.IsValid)
         {
@@ -75,7 +72,7 @@ public class AuthController : BaseController
 
         if (result.Succeeded)
         {
-            _logger.LogInformation("User logged in.");
+            _logger.LogInformation("User logged in");
             return Inertia.Location(returnUrl);
         }
 
@@ -83,7 +80,7 @@ public class AuthController : BaseController
             return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, input.RememberMe });
         if (result.IsLockedOut)
         {
-            _logger.LogWarning("User account locked out.");
+            _logger.LogWarning("User account locked out");
             return RedirectToPage("./Lockout");
         }
 

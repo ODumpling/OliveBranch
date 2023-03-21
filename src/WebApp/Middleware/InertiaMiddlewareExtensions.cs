@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using InertiaCore;
 using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace OliveBranch.WebApp.Middleware;
 
@@ -31,34 +32,6 @@ public static class InertiaMiddlewareExtensions
             });
 
             await next(context);
-        });
-
-
-        return app;
-    }
-
-    /// <summary>
-    /// Creates a cookie to be used to validate against CSRF or XSRF attacks
-    /// </summary>
-    /// <param name="app"></param>
-    /// <returns></returns>
-    public static IApplicationBuilder UseInertiaXSRF(this IApplicationBuilder app)
-    {
-        var antiforgery = app.ApplicationServices.GetRequiredService<IAntiforgery>();
-
-        app.Use((context, next) =>
-        {
-            if (context.Request.Cookies["XSRF-TOKEN"] != null) return next(context);
-
-            var tokenSet = antiforgery.GetAndStoreTokens(context);
-
-            context.Response.Cookies.Append("XSRF-TOKEN", tokenSet.RequestToken!,
-                new CookieOptions
-                {
-                    HttpOnly = false
-                });
-
-            return next(context);
         });
 
 

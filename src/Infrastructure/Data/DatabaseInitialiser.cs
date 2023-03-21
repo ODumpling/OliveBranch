@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using OliveBranch.Domain.Entities;
@@ -63,7 +64,7 @@ public class DatabaseInitialiser
             await _roleManager.CreateAsync(administratorRole);
 
         // Default users
-        var administrator = new ApplicationUser { UserName = "OliveAdministrator", Email = "administrator@localhost" };
+        var administrator = new ApplicationUser { UserName = "OliveAdministrator", Email = "admin@localhost" };
 
         if (_userManager.Users.All(u => u.Email != administrator.Email))
         {

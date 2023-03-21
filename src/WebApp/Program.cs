@@ -17,7 +17,11 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddInertia();
 
-builder.Services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
+builder.Services.AddAntiforgery(options =>
+{
+    options.HeaderName = "X-XSRF-TOKEN";
+    options.Cookie.Name = "XSRF-TOKEN";
+});
 
 
 var app = builder.Build();
@@ -53,12 +57,9 @@ app.MapControllerRoute(
     "default",
     "{controller=Home}/{action=Index}/{id?}");
 
-app.MapRazorPages();
 
 app.UseInertia();
 
 app.UseInertiaAuth();
-
-app.UseInertiaXSRF();
 
 app.Run();

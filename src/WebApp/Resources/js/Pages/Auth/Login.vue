@@ -1,4 +1,39 @@
-﻿<template>
+﻿<script>
+export default {
+  layout: null,
+}
+</script>
+
+<script setup>
+
+import {useForm} from "@inertiajs/vue3";
+
+const props = defineProps({
+  errors: Object,
+  returnUrl: String,
+});
+
+
+let form = useForm({
+  email: '',
+  password: '',
+  rememberMe: false,
+  returnUrl: props.returnUrl
+});
+
+let submit = () => {
+  form.post("/auth/login", {
+    headers: {
+      "X-XSRF-TOKEN": document.getElementsByName("__RequestVerificationToken")[0].value
+    }
+  });
+}
+
+ console.log(document.getElementsByName("__RequestVerificationToken")[0].value);
+
+</script>
+
+<template>
   <section class="flex items-center flex-1 w-full overflow-x-hidden min-h-screen">
 
     <div class="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -35,38 +70,12 @@
 
       <div class="flex items-center justify-center py-4 text-center bg-gray-50 dark:bg-gray-700">
         <span class="text-sm text-gray-600 dark:text-gray-200">Don't have an account? </span>
-        <Link href="/auth/register" class="mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline">Register</Link>
+        <Link href="/auth/register" class="mx-2 text-sm font-bold text-blue-500 dark:text-blue-400 hover:underline">
+          Register
+        </Link>
       </div>
     </div>
   </section>
 
 </template>
 
-<script>
-export default {
-  layout: null,
-}
-</script>
-
-<script setup>
-
-import {useForm} from "@inertiajs/vue3";
-
-const props = defineProps({
-  errors: Object,
-  returnUrl: String,
-});
-
-
-let form = useForm({
-  email: '',
-  password: '',
-  rememberMe: false,
-  returnUrl: props.returnUrl
-});
-
-let submit = () => {
-  form.post("/auth/login");
-}
-
-</script>
