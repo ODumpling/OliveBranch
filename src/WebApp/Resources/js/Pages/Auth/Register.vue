@@ -70,7 +70,9 @@ defineProps({
         </form>
       </div>
     </div>
-    <Toastr :errors="errors" v-if="Object.keys(errors).length > 1"/>
+    <Toastr :errors="errors" v-if="Object.keys(errors).length > 1">
+      Ensure that these requirements are met:
+    </Toastr>
   </section>
 
 </template>

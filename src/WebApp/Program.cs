@@ -20,9 +20,8 @@ builder.Services.AddInertia();
 builder.Services.AddAntiforgery(options =>
 {
     options.HeaderName = "X-XSRF-TOKEN";
-    options.Cookie.Name = "XSRF-TOKEN";
+    options.SuppressXFrameOptionsHeader = true;
 });
-
 
 var app = builder.Build();
 
@@ -57,6 +56,7 @@ app.MapControllerRoute(
     "default",
     "{controller=Home}/{action=Index}/{id?}");
 
+app.UseMiddleware<CsrfMiddleware>();
 
 app.UseInertia();
 

@@ -6,7 +6,8 @@ export default {
 
 <script setup>
 
-import {useForm} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
+import Toastr from "../../Components/Toastr.vue";
 
 const props = defineProps({
   errors: Object,
@@ -22,14 +23,13 @@ let form = useForm({
 });
 
 let submit = () => {
-  form.post("/auth/login", {
-    headers: {
-      "X-XSRF-TOKEN": document.getElementsByName("__RequestVerificationToken")[0].value
-    }
-  });
+  form.post("/auth/login");
 }
 
- console.log(document.getElementsByName("__RequestVerificationToken")[0].value);
+router.on('invalid', (event) => {
+  console.log(`An invalid Inertia response was received.`)
+  console.log(event.detail.response)
+})
 
 </script>
 
@@ -76,6 +76,9 @@ let submit = () => {
       </div>
     </div>
   </section>
+  <Toastr :errors="errors" v-if="Object.keys(errors).length > 1">
+    Error:
+  </Toastr>
 
 </template>
 

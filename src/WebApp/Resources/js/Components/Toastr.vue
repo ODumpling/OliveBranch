@@ -18,7 +18,7 @@ defineProps({
     </svg>
     <span class="sr-only">Danger</span>
     <div>
-      <span class="font-medium">Ensure that these requirements are met:</span>
+      <span class="font-medium"><Slot></Slot></span>
       <ul class="mt-1.5 ml-4 list-disc list-inside">
         <li v-for="error in errors" :key="Object.keys(error)">{{error}}</li>
       </ul>
