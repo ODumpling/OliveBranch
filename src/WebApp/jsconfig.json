@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["Frontend/js/*"]
+    }
+  },
+  "exclude": ["node_modules", "wwwroot"]
+}
