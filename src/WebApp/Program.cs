@@ -16,6 +16,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 builder.Services.AddInertia();
+builder.Services.AddViteHelper(options =>
+{
+    options.PublicDirectory = "wwwroot";
+    options.BuildDirectory = "build";
+    options.HotFile = "hot";
+    options.ManifestFilename = "manifest.json";
+});
 
 builder.Services.AddAntiforgery(options =>
 {

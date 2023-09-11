@@ -2,8 +2,7 @@
 module.exports = {
     content: [
         "./Views/**/*.cshtml",
-        "./resources/**/*.js",
-        "./resources/**/*.vue",
+        "./Frontend/**/*.{vue,js,ts,jsx,tsx}",
     ],
     theme: {
         extend: {},
